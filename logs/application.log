@@ -19763,3 +19763,10 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 2025-01-03T18:20:00.272+09:00 DEBUG 9732 --- [MessageBroker-6] c.s.f.i.p.outbox.OutboxScheduler         : No unpublished outbox records found.
 2025-01-03T18:20:05.290+09:00 DEBUG 9732 --- [MessageBroker-6] c.s.f.i.p.outbox.OutboxScheduler         : No unpublished outbox records found.
 2025-01-03T18:20:10.303+09:00 DEBUG 9732 --- [MessageBroker-6] c.s.f.i.p.outbox.OutboxScheduler         : No unpublished outbox records found.
+2025-01-03T18:20:15.314+09:00 DEBUG 9732 --- [MessageBroker-6] c.s.f.i.p.outbox.OutboxScheduler         : No unpublished outbox records found.
+2025-01-03T18:20:20.327+09:00 DEBUG 9732 --- [MessageBroker-6] c.s.f.i.p.outbox.OutboxScheduler         : No unpublished outbox records found.
+2025-01-03T18:20:25.345+09:00 DEBUG 9732 --- [MessageBroker-6] c.s.f.i.p.outbox.OutboxScheduler         : No unpublished outbox records found.
+2025-01-03T18:20:30.350+09:00 DEBUG 9732 --- [MessageBroker-6] c.s.f.i.p.outbox.OutboxScheduler         : No unpublished outbox records found.
+2025-01-03T18:20:35.359+09:00 DEBUG 9732 --- [MessageBroker-6] c.s.f.i.p.outbox.OutboxScheduler         : No unpublished outbox records found.
+2025-01-03T18:20:40.376+09:00 DEBUG 9732 --- [MessageBroker-6] c.s.f.i.p.outbox.OutboxScheduler         : No unpublished outbox records found.
+2025-01-03T18:20:45.398+09:00 DEBUG 9732 --- [MessageBroker-6] c.s.f.i.p.outbox.OutboxScheduler         : No unpublished outbox records found.
