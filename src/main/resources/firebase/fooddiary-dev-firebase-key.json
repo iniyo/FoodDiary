@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "fooddiary-e02dd",
+  "private_key_id": "24bf0ccecc96d84f63e933f288822c8db2b827bc",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCfbiK5Mj6ocTn9\nwKAJVIIYrn7uvCGI/91c8GjmNn9XHzSKj62IA5mOTVvgP5ZmnG3YSogXaa/Y2Z6x\nE/SKo09PE96uQaubBmW67T3XoixDA6/eHZdLu6nTKZ7jwXVigXHoFtSMrBKks45Q\nhJ8OKMbo1MOqdwLK/9JMzRyeWKdr7W9Nf8mERqT1zMPDt7UDTAbTuOPt4Mm7NVDd\nI5vFmoSgv9bzUJd8V8SOFLaN8YxOl19gcapbTK+Iw3Jviq8UCwGxt8LK+f4he+4A\nXvvTxiGSF1HRgpjU3jmsyxLm6lLscVxdtyQpoeXK441YJ4vdV0+dwTZCR9Uzi6je\nyZd9vePfAgMBAAECggEAMII9vXSsvOqqlutXpk8YwHLDe1cxqvITA/bALB+z0inT\n/j7mMWbK/5HJHSur0u/Qukk/LESDdSsNzlpAgzhaZriofgPMN4CUTnJl6SjWZ9OE\n3MPLJ4djjjTxO+I+majCJDhiFqU6jPN3H0ei75d3ohsup7zLVEHPVn/oL8PQuRUL\nrk1yvXaS1fusJ1dPqFQ1btKzpdEvDxAQUv4lkX/ZYw5wkNouxCBmAwgvLlZ2f6Qx\n1BNjnNjbcdlulEvvCxQYAQ9zYBuXPw1EAJ/q+09shW+du3z9Q9OgEw1OmPSC0IDs\niwaTJZRs1kZsrK4BQhCUcUk0WvplYLwPRQuyl/YJpQKBgQDWAyRd+I7sULmdO0Vd\nKHYTbUH+iAoMGOQwkUDDeujo/lJO9EA0dEZc3L+ocArwsh7Zbkucs8ZPnzD6H6jc\nzCWFQi841A6dGtcequf5ZPTKaatr5vOWLQ1Nu9fbMr3R6L0ODh221IQ+VerjtD8o\n7Vt0VvvHNx6DIXn0VaQDJJ80swKBgQC+tZYikXVvD96Ewjz819OwGh7R7a6SVyq9\nzRPFPO6q+I4bSQJBw4d4P5pDW0P5yNFeziDYU/LaiKOSRJc7ypgJ4onZaBG9zKC6\nBhtKxe65C2R+pqD/9j1XafOZz1aLq4QFVtuZbgByxDLqpstG08sQnUx7u1fXdS5K\nFiSGZBaiJQKBgHXvJ1RNi904IwE9T10l1eOgutRb/UVrVhxZfxn6Gm2C8LKnsNX3\nGWtFDqzwiWbYkV16hVpmSytHa4L6fWCncym7LjCf0ynKR6+TuN/bPXZpwthkXelt\nDD7A/BPEI4yQN9aN+tvswq9jQ1yV0JRqMJKs+HRwsHTMttrpcsd0n/M3AoGASyZB\nGDQbg31MYSItaDEgMLfKR00SyoXgyNQkI0gEgIjbbrMRWZrUKjVd84bmPWq93k75\nsGU8QJMxabTvp1cJHHQRgAM7YoBdIZDAdnGSxYZQvnuo29RLjcOpg4Wpg/Y9WuFE\nPayULqVTrxW06p8Q2OYzOlqznaqGaBlboT2VkaUCgYBuZdSXjMBHcYBwQojyuUnO\niCXpyOFphtaRN06f4Lu7sw1aSuoIRvJZezROt3a3CUAD5rpBK2IdQjDPg5p0t1AX\nOAU0GBuPOksYOnv7h9LcCnJIUtX3XQugpWDeRCX1ScIiKrX4h9h0WUIbz3aB1mzg\ny8IlbMb0Xr737vURIQlvTQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-bhrxj@fooddiary-e02dd.iam.gserviceaccount.com",
+  "client_id": "103573738176284606719",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-bhrxj%40fooddiary-e02dd.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

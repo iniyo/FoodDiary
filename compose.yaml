@@ -1,0 +1,52 @@
+services:
+  mysql:
+    image: 'mysql:latest'
+    environment:
+      - 'MYSQL_DATABASE=kafka_redis_test'
+      - 'MYSQL_PASSWORD=1234'
+      - 'MYSQL_ROOT_PASSWORD=1234'
+      - 'MYSQL_USER=root'
+    ports:
+      - '3306'
+  redis-1:
+    image: redis:latest
+    container_name: redis-1
+    ports:
+      - "6379:6379"
+    command: [ "redis-server", "--port", "6379", "--cluster-enabled", "yes", "--cluster-config-file", "nodes-6379.conf", "--cluster-node-timeout", "5000", "--appendonly", "yes" ]
+
+  redis-2:
+    image: redis:latest
+    container_name: redis-2
+    ports:
+      - "6380:6379"
+    command: [ "redis-server", "--port", "6379", "--cluster-enabled", "yes", "--cluster-config-file", "nodes-6380.conf", "--cluster-node-timeout", "5000", "--appendonly", "yes" ]
+
+  redis-3:
+    image: redis:latest
+    container_name: redis-3
+    ports:
+      - "6381:6379"
+    command: ["redis-server", "--port", "6379", "--cluster-enabled", "yes", "--cluster-config-file", "nodes-6381.conf", "--cluster-node-timeout", "5000", "--appendonly", "yes"]
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+### docker-compose up -d kafka

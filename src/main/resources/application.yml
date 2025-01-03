@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  web:
+    resources:
+      add-mapping: false
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQLDialect
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+  data:
+    redis:
+      cluster:
+        nodes:
+          - localhost:6379
+          - localhost:6380
+          - localhost:6381
+      timeout: 3000
+  security:
+    user:
+      name: admin
+      password: admin123
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/kafka_redis_test?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: 1234
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+  # 특정 패키지는 스캔 제외
+  packagesToExclude: com.service.fooddiary.interfaces.dto.user
+
+# 로깅 설정
+logging:
+  level:
+    root: INFO         # 전체(root) 로깅 레벨을 INFO로 설정
+    com.service.fooddiary: DEBUG # 특정 패키지(예: com.example) 로깅 레벨 DEBUG
+    org.springframework.web: WARN # 스프링 웹 패키지 로깅 레벨 WARN
+    org.springframework.web.socket: DEBUG
+    org.springframework.messaging: DEBUG
+  file:
+    name: logs/application.log # 로그 파일 경로
