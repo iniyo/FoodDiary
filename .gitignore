@@ -22,10 +22,12 @@ bin/
 *.iws
 *.iml
 *.ipr
-*.json
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+
+# Firebase JSON 파일 무시
+src/main/resources/firebase/*.json
 
 ### NetBeans ###
 /nbproject/private/
