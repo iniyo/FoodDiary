@@ -15,7 +15,7 @@ import static com.service.fooddiary.infrastructure.common.constants.AppConstants
 
 @Slf4j
 @Configuration
-public class FcmConfig {
+class FcmConfig {
 
     @Bean
     public FirebaseMessaging firebaseMessaging() throws IOException {

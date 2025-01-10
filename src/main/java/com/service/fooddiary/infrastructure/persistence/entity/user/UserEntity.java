@@ -47,7 +47,8 @@ public class UserEntity {
         return User.of(
                 new UserId(userId),
                 userInfoEntity.toDomain(),
-                userBodyInfoEntity != null ? userBodyInfoEntity.toDomain() : null
+                userBodyInfoEntity != null ? userBodyInfoEntity.toDomain() : null,
+                null
         );
     }
 

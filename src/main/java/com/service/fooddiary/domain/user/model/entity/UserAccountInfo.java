@@ -28,7 +28,7 @@ public class UserAccountInfo {
                 email,
                 phoneNumber,
                 token,
-                createdAt
+                createdAt != null ? createdAt : LocalDate.now()
         );
     }
 

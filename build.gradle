@@ -39,14 +39,14 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
-    implementation "me.paulschwarz:spring-dotenv:${version}"
-    // implementation 'org.springframework.boot:spring-boot-starter-security'
-    // implementation 'org.springframework.boot:spring-boot-starter-oauth2-authorization-server'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-authorization-server'
     implementation 'org.springframework.kafka:spring-kafka'
     implementation 'org.springframework.modulith:spring-modulith-events-api'
     implementation 'org.springframework.modulith:spring-modulith-starter-core'
     implementation 'org.springframework.modulith:spring-modulith-starter-jpa'
-
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'com.google.firebase:firebase-admin:9.4.2' // firebase
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2' // Springdoc OpenAPI (Swagger)
 
@@ -55,6 +55,11 @@ dependencies {
     annotationProcessor 'com.querydsl:querydsl-apt:5.1.0:jakarta'
     annotationProcessor 'jakarta.annotation:jakarta.annotation-api:2.1.1'
     annotationProcessor 'jakarta.persistence:jakarta.persistence-api:3.1.0'
+
+    //Jwt
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-docker-compose'

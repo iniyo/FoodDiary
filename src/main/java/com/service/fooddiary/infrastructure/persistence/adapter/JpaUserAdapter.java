@@ -36,4 +36,10 @@ public class JpaUserAdapter implements UserRepository {
     public User findByUserEmail(Email email) {
         return jpaUserRepository.findByUserInfoEntityEmail(email.email()).orElseThrow(NotFoundException::new).toDomain();
     }
+
+    @Override
+    public void save(User user) {
+        UserEntity userEntity = UserEntity.fromDomain(user);
+        jpaUserRepository.save(userEntity);
+    }
 }

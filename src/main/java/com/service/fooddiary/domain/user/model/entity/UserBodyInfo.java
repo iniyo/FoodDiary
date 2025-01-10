@@ -44,6 +44,13 @@ public class UserBodyInfo {
         );
     }
 
+    public static UserBodyInfo of() {
+        return new UserBodyInfo(
+
+        );
+    }
+
+
     public UserBodyInfoId getUserBodyInfoId() {
         return userBodyInfoId;
     }

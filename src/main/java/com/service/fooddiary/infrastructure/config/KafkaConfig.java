@@ -24,7 +24,7 @@ import static com.service.fooddiary.infrastructure.common.constants.AppConstants
 
 @Configuration
 @EnableKafka
-public class KafkaConfig {
+class KafkaConfig {
 
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, Object> kafkaListenerContainerFactory(

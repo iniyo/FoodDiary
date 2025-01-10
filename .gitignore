@@ -25,7 +25,7 @@ bin/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-
+src/main/resources/*.env
 # Firebase JSON 파일 무시
 src/main/resources/firebase/*.json
 

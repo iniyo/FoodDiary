@@ -11,6 +11,29 @@ spring:
       ddl-auto: update
     properties:
       hibernate.dialect: org.hibernate.dialect.MySQLDialect
+  security:
+    user:
+      name: admin
+      password: admin123
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: ba4ad9422c578c47f67e3d3b16c84b53 # REST API key
+            client-secret: 6T2gEREyLHs5SaEvZHdzBYD4mgInFaLA # Admin key
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8080/user/me/kakao
+            scope: profile_nickname # 요청할 범위
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+          naver:
+            client-id: your-naver-client-id
+            client-secret: your-naver-client-secret
+            scope: profile, email
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
   data:
@@ -21,10 +44,6 @@ spring:
           - localhost:6380
           - localhost:6381
       timeout: 3000
-  security:
-    user:
-      name: admin
-      password: admin123
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/kafka_redis_test?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
@@ -49,3 +68,6 @@ logging:
     org.springframework.messaging: DEBUG
   file:
     name: logs/application.log # 로그 파일 경로
+
+jwt:
+  key: c2VjcmV0a2V5c2VjcmV0a2V5c2VjcmV0a2V5c2VjcmV0a2V5c2VjcmV0a2V5c2VjcmV0a2V5c2VjcmV0a2V5c2VjcmV0a2V5
