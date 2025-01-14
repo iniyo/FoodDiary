@@ -7,7 +7,7 @@ import com.service.fooddiary.interfaces.dto.user.UserInfoResponseDto;
 import com.service.fooddiary.interfaces.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +29,7 @@ public class UserController {
     }
 
     // 동적 조건으로 사용자 조회 (관리자 전용)
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/find")
     public ResponseEntity<ApiResult<List<UserInfoResponseDto>>> findUsersByCondition(@ModelAttribute UserInfoRequestDto dto) {
         List<UserInfoResponseDto> result = userUseCase

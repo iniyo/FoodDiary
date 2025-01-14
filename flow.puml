@@ -1,0 +1,55 @@
+@startuml
+
+actor Client
+participant "FcmController" as Controller
+participant "FcmMapper" as Mapper
+participant "NotificationUseCase" as UseCase
+participant "UserRepository" as UserRepo
+participant "OutboxRepository" as OutboxRepo
+participant "OutboxScheduler" as Scheduler
+participant "FcmClient" as FcmClient
+participant "FirebaseMessaging" as FCM
+participant "KafkaNotificationProducer" as Producer
+
+== HTTP 요청 처리 ==
+Client -> Controller: POST /fcm/{single|multi}
+Controller -> Mapper: reqToService(DTO)
+Controller -> UseCase: sendNotification() or sendMultipleNotification()
+
+alt 단일 알림 전송
+    UseCase -> UserRepo: findByUserEmail(email)
+    UseCase -> OutboxRepo: Save OutboxEntity
+else 다중 알림 전송
+    UseCase -> UserRepo: findAll()
+    UseCase -> OutboxRepo: Save OutboxEntity
+end
+
+Controller --> Client: ApiResult 응답
+
+== Outbox 처리 ==
+Scheduler -> OutboxRepo: findUnpublishedForUpdate()
+activate Scheduler
+
+loop 미발행 메시지
+    Scheduler -> FcmClient: 알림 전송 요청
+    FcmClient -> FCM: 메시지 전송
+
+    alt 성공
+        FCM --> FcmClient: Success Response
+        FcmClient --> Scheduler: Success
+        Scheduler -> Producer: 성공 이벤트 발행
+        Scheduler -> OutboxRepo: published = true
+    else 실패
+        FCM --> FcmClient: Error Response
+        FcmClient --> Scheduler: Error
+        alt 재시도 가능
+            Scheduler -> OutboxRepo: retryCount 증가
+        else 재시도 불가
+            Scheduler -> OutboxRepo: deadLetter = true
+            Scheduler -> Producer: 실패 이벤트 발행
+        end
+    end
+end
+deactivate Scheduler
+
+@enduml
