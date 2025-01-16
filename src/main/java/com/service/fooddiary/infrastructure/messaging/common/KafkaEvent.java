@@ -1,30 +1,10 @@
 package com.service.fooddiary.infrastructure.messaging.common;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.service.fooddiary.infrastructure.messaging.payloads.NotificationEventPayload;
+import com.service.fooddiary.infrastructure.utils.annotation.KafkaPayload;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
-@JsonSubTypes({
-        // "notificationEvent" 등 name은 자유롭게
-        @JsonSubTypes.Type(value = NotificationEventPayload.class, name = "notificationEvent")
-        // 예: 추가 이벤트가 있다면 여기에 @JsonSubTypes.Type(...)로 등록
-        // @JsonSubTypes.Type(value = PaymentEventPayload.class, name = "paymentEvent")
-})
 public abstract class KafkaEvent {
-
-    private String topic;
-
-    public KafkaEvent(String topic) {
-        this.topic = topic;
-    }
-
-    /**
-     * Kafka 이벤트가 사용할 Topic 이름 반환.
-     */
-    public String getTopic() {
-        return topic;
-    }
 
     /**
      * Kafka 이벤트의 메시지 반환.
@@ -35,9 +15,21 @@ public abstract class KafkaEvent {
     }
 
     /**
-     * Kafka 이벤트의 토픽 이름을 변경 가능.
+     * 이 이벤트가 어떤 구체 클래스로 만들어졌는지 반환
+     * (ex: NotificationEventPayload.class)
      */
-    public void setTopic(String topic) {
-        this.topic = topic;
+    public Class<? extends KafkaEvent> getConcreteClass() {
+        return this.getClass();
+    }
+
+    /**
+     * 어노테이션(@KafkaPayload)에 지정된 값이 있으면 반환,
+     * 없으면 간단히 클래스 이름 사용
+     */
+    public String getEventType() {
+        KafkaPayload anno = this.getClass().getAnnotation(KafkaPayload.class);
+        return (anno != null && !anno.value().isEmpty())
+                ? anno.value()
+                : this.getClass().getSimpleName(); // 혹은 "UNKNOWN"
     }
 }

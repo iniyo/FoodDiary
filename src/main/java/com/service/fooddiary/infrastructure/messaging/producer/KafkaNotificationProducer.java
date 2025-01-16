@@ -1,6 +1,7 @@
 package com.service.fooddiary.infrastructure.messaging.producer;
 
 import com.service.fooddiary.infrastructure.messaging.common.KafkaEvent;
+import com.service.fooddiary.infrastructure.messaging.common.topics.KafkaTopics;
 import com.service.fooddiary.infrastructure.messaging.payloads.NotificationEventPayload;
 import com.service.fooddiary.interfaces.dto.notification.FcmResponseDto;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +26,7 @@ public class KafkaNotificationProducer {
     }
 
     public void sendNotification(KafkaEvent event) {
-        CompletableFuture<?> future = kafkaTemplate.send(event.getTopic(), event);
+        CompletableFuture<?> future = kafkaTemplate.send(KafkaTopics.NOTIFICATION_TOPIC, event);
 
         future.thenAccept(result -> log.info("NotificationEvent sent successfully: {}", event))
                 .exceptionally(ex -> {
@@ -34,27 +35,29 @@ public class KafkaNotificationProducer {
                 });
     }
 
-    public void sendNotificationEvent(NotificationEventPayload payload) {
-        // NotificationEventPayload -> NotificationEvent 변환
-        NotificationEventPayload event = NotificationEventPayload.of(
-                payload.getRequestId(),
-                payload.getContentId(),
-                payload.getType(),
-                payload.getTitle(),
-                payload.getContent(),
-                payload.getUserName(),
-                payload.getToken()
-        );
-
-        kafkaTemplate.send(event.getTopic(), event)
-                .whenComplete((result, ex) -> {
-                    if (ex != null) {
-                        log.error("Failed to send notification event: {}", event, ex);
-                    } else {
-                        log.info("NotificationEvent published successfully: {}", event);
-                    }
-                });
-    }
+//    public void sendNotificationEvent(NotificationEventPayload payload) {
+//        // NotificationEventPayload -> NotificationEvent 변환
+//        NotificationEventPayload event = NotificationEventPayload.of(
+//                payload.getRequestId(),
+//                payload.getContentId(),
+//                payload.getType(),
+//                payload.getTitle(),
+//                payload.getContent(),
+//                payload.getUserName(),
+//                payload.getToken()
+//        );
+//
+//        kafkaTemplate.send(KafkaTopics.NOTIFICATION_TOPIC, event)
+//                .whenComplete((result, ex) -> {
+//                    if (ex != null) {
+//                        log.error("Failed to send notification event: {}", event, ex);
+//                    } else {
+//                        log.info("NotificationEvent published successfully: {}", event);
+//                    }
+//                });
+//
+//        String eventType = event.getEventType();
+//    }
 
     public void publishSuccess(UUID requestId, String msg) {
         // /topic/notificationResult 라는 채널로 브로드캐스트

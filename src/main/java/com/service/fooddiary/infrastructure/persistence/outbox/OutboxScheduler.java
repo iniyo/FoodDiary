@@ -50,8 +50,7 @@ public class OutboxScheduler {
                 Class<? extends KafkaEvent> runtimeClass = event.getClass();
 
                 // registry에서 핸들러를 가져옴
-                KafkaEventHandler<KafkaEvent> handler =
-                        (KafkaEventHandler<KafkaEvent>) handlerRegistry.getHandler(runtimeClass);
+                KafkaEventHandler<KafkaEvent> handler = (KafkaEventHandler<KafkaEvent>) handlerRegistry.getHandler(runtimeClass);
 
                 if (handler == null) {
                     log.warn("No handler found for event class: {} => skipping", runtimeClass.getName());

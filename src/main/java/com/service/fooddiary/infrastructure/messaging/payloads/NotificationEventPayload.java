@@ -5,13 +5,17 @@ import com.service.fooddiary.application.dto.FcmServiceCommand;
 import com.service.fooddiary.domain.notification.NotifyType;
 import com.service.fooddiary.domain.user.model.vo.Token;
 import com.service.fooddiary.infrastructure.messaging.common.KafkaEvent;
-import com.service.fooddiary.infrastructure.messaging.common.topics.KafkaTopics;
+import com.service.fooddiary.infrastructure.utils.annotation.KafkaPayload;
 import lombok.Getter;
 
 import java.util.UUID;
 
+import static com.service.fooddiary.infrastructure.messaging.common.topics.KafkaTopics.NOTIFICATION_EVENT;
+
+
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL) // null 필드를 JSON에서 제외
+@KafkaPayload(NOTIFICATION_EVENT)
 public class NotificationEventPayload extends KafkaEvent {
 
     private final UUID requestId;
@@ -24,7 +28,6 @@ public class NotificationEventPayload extends KafkaEvent {
 
     // Default Constructor for Kafka Serialization/Deserialization
     private NotificationEventPayload(UUID requestId, Long contentId, NotifyType type, String title, String content, String userName, Token token) {
-        super(KafkaTopics.NOTIFICATION_TOPIC);
         this.requestId = requestId;
         this.contentId = contentId;
         this.type = type;

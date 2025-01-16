@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class NotificationEventHandler implements KafkaEventHandler<NotificationEventPayload> {
+class NotificationEventHandler implements KafkaEventHandler<NotificationEventPayload> {
 
     private final KafkaNotificationProducer producer;
 
@@ -21,6 +21,6 @@ public class NotificationEventHandler implements KafkaEventHandler<NotificationE
     @Override
     public void handle(NotificationEventPayload event) {
         // 카프카 발행 등 알림 처리 로직
-        producer.sendNotificationEvent(event);
+        producer.sendNotification(event);
     }
 }
